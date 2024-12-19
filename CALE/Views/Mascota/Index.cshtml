@@ -1,0 +1,43 @@
+﻿@model IEnumerable<CALE.Models.Animal>
+
+@{
+    ViewData["Title"] = "Ver Mascotas";
+}
+
+<h1 class="text-center my-4">Ver Mascotas</h1>
+
+<div class="container">
+    <div class="row g-4">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-2 col-sm-4">
+                <a asp-action="Details" asp-route-id="@item.Id" class="text-decoration-none">
+                    <div class="card h-100 shadow-sm">
+                        <img src="@item.ImageUrl" class="card-img-top" alt="Imagen de @item.Nombre" style="object-fit: cover; height: 150px;" />
+                        <div class="card-body text-center">
+                            <h5 class="card-title text-truncate text-decoration-none">@item.Nombre</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+</div>
+
+@if (TempData["Success"] != null)
+{
+    <script>
+        function decodeHtml(html) {
+            var txt = document.createElement("textarea");
+            txt.innerHTML = html;
+            return txt.value;
+        }
+        var successMessage = decodeHtml('@TempData["Success"]');
+        Swal.fire({
+            title: '¡Éxito!',
+            text: successMessage,
+            icon: 'success',
+            confirmButtonText: 'Aceptar'
+        });
+    </script>
+}

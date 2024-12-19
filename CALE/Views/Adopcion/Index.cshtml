@@ -1,0 +1,53 @@
+﻿@model IEnumerable<CALE.Models.Adopcion>
+
+@{
+    ViewData["Title"] = "Adopciones";
+}
+
+<h1 class="text-center mb-4 text-primary">Adopciones</h1>
+
+<div class="container">
+    <table class="table table-bordered table-striped table-hover shadow-lg rounded">
+        <thead class="thead-light">
+            <tr>
+                <th>Fecha de Adopción</th>
+                <th>Mascota</th>
+                <th>Raza</th>
+                <th>Edad</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr style="cursor: pointer;" onclick="window.location='@Url.Action("Details", "Adopcion", new { id = item.Id })'">
+                    <td>@Html.DisplayFor(modelItem => item.FechaAdopcion)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Animal.Nombre)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Animal.Raza)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Animal.Edad)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@if (TempData["Success"] != null)
+{
+    <script>
+        function decodeHtml(html) {
+            var txt = document.createElement("textarea");
+            txt.innerHTML = html;
+            return txt.value;
+        }
+
+        var successMessage = decodeHtml('@TempData["Success"]');
+        Swal.fire({
+            title: '¡Éxito!',
+            text: successMessage,
+            icon: 'success',
+            confirmButtonText: 'Aceptar',
+            background: '#f8f9fa',
+            padding: '2em',
+            backdrop: true
+        });
+    </script>
+}

@@ -1,0 +1,63 @@
+﻿@model CALE.Models.Animal
+
+@{
+    ViewData["Title"] = "Detalles de la Mascota";
+}
+
+<h1 class="text-center my-4">Detalles de la Mascota</h1>
+
+<div class="container d-flex justify-content-center">
+    <div class="card shadow-lg" style="max-width: 600px; width: 100%;">
+        <img src="@Model.ImageUrl" class="card-img-top" alt="Imagen de @Model.Nombre" style="object-fit: cover; height: 300px; border-radius: 4px;" />
+        <div class="card-body text-center">
+            <h4 class="card-title mb-3">@Model.Nombre</h4>
+            <dl class="row justify-content-center">
+                <dt class="col-sm-4">Especie:</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Especie)</dd>
+
+                <dt class="col-sm-4">Raza:</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Raza)</dd>
+
+                <dt class="col-sm-4">Edad:</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Edad) años</dd>
+
+                <dt class="col-sm-4">Sexo:</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Sexo)</dd>
+
+                <dt class="col-sm-4">Estado:</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Estado)</dd>
+
+                <dt class="col-sm-4">Dueño:</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Dueno.Nombre)</dd>
+            </dl>
+        </div>
+        <div class="card-footer text-center">
+            <a href="javascript:void(0)"
+               class="btn btn-success me-2"
+               onclick="confirmAdoption('@Url.Action("Create", "Adopcion", new { id = Model?.Id })')">
+                Adoptar
+            </a>
+
+            <a asp-action="Index" class="btn btn-secondary">Volver a la lista</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    function confirmAdoption(adoptUrl) {
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: "¡No podrás deshacer esta acción!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, adoptar',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = adoptUrl;
+            }
+        });
+    }
+</script>
