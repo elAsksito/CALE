@@ -104,7 +104,7 @@ namespace CALE.Controllers
 
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimsPrincipal);
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Mascota");
         }
     }
 }
