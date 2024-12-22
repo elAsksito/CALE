@@ -4,50 +4,49 @@
     ViewData["Title"] = "Dar en Adopción";
 }
 
-<h1>Dar en Adopción</h1>
+<h1 class="text-center my-4" style="color: #ff5722;">Dar en Adopción</h1>
 
-<h4>Mascota</h4>
+<h4 class="text-muted">Mascota</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create" enctype="multipart/form-data">
+    <div class="col-md-6 offset-md-3">
+        <form asp-action="Create" enctype="multipart/form-data" class="p-4 shadow rounded" style="background-color: #fff7e6; border: 1px solid #ff5722;">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Nombre" class="control-label"></label>
-                <input asp-for="Nombre" class="form-control" />
+            <div class="form-group mb-3">
+                <label asp-for="Nombre" class="form-label" style="color: #6c757d;">Nombre</label>
+                <input asp-for="Nombre" class="form-control" style="border-color: #ff5722;" />
                 <span asp-validation-for="Nombre" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Especie" class="control-label"></label>
-                <input asp-for="Especie" class="form-control" />
+            <div class="form-group mb-3">
+                <label asp-for="Especie" class="form-label" style="color: #6c757d;">Especie</label>
+                <input asp-for="Especie" class="form-control" style="border-color: #ff5722;" />
                 <span asp-validation-for="Especie" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Raza" class="control-label"></label>
-                <input asp-for="Raza" class="form-control" />
+            <div class="form-group mb-3">
+                <label asp-for="Raza" class="form-label" style="color: #6c757d;">Raza</label>
+                <input asp-for="Raza" class="form-control" style="border-color: #ff5722;" />
                 <span asp-validation-for="Raza" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Edad" class="control-label"></label>
-                <input asp-for="Edad" class="form-control" />
+            <div class="form-group mb-3">
+                <label asp-for="Edad" class="form-label" style="color: #6c757d;">Edad</label>
+                <input asp-for="Edad" class="form-control" style="border-color: #ff5722;" />
                 <span asp-validation-for="Edad" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Sexo" class="control-label"></label>
-                <select asp-for="Sexo" class="form-control">
+            <div class="form-group mb-3">
+                <label asp-for="Sexo" class="form-label" style="color: #6c757d;">Sexo</label>
+                <select asp-for="Sexo" class="form-control" style="border-color: #ff5722;">
                     <option value="Macho">Macho</option>
                     <option value="Hembra">Hembra</option>
                 </select>
                 <span asp-validation-for="Sexo" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="ImageUrl" class="control-label"></label>
-                <input type="file" name="ImageFile" class="form-control" />
+            <div class="form-group mb-3">
+                <label asp-for="ImageUrl" class="form-label" style="color: #6c757d;">Foto</label>
+                <input type="file" name="ImageFile" class="form-control" style="border-color: #ff5722;" />
                 <span asp-validation-for="ImageUrl" class="text-danger"></span>
             </div>
-            <br/>
-            <div class="form-group">
-                <input type="submit" value="Guardar" class="btn btn-success" />
+            <div class="form-group text-center">
+                <input type="submit" value="Guardar" class="btn btn-success me-2" />
                 <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
             </div>
         </form>
@@ -66,5 +65,7 @@
 }
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

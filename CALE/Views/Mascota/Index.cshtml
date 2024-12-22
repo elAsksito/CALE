@@ -4,18 +4,18 @@
     ViewData["Title"] = "Ver Mascotas";
 }
 
-<h1 class="text-center my-4">Ver Mascotas</h1>
+<h1 class="text-center my-4" style="color: #ff5722;">Ver Mascotas</h1>
 
 <div class="container">
     <div class="row g-4">
         @foreach (var item in Model)
         {
-            <div class="col-md-2 col-sm-4">
+            <div class="col-md-4 col-sm-6">
                 <a asp-action="Details" asp-route-id="@item.Id" class="text-decoration-none">
-                    <div class="card h-100 shadow-sm">
-                        <img src="@item.ImageUrl" class="card-img-top" alt="Imagen de @item.Nombre" style="object-fit: cover; height: 150px;" />
-                        <div class="card-body text-center">
-                            <h5 class="card-title text-truncate text-decoration-none">@item.Nombre</h5>
+                    <div class="card h-100 shadow-sm" style="border: 1px solid #ff5722;">
+                        <img src="@item.ImageUrl" class="card-img-top rounded-top" alt="Imagen de @item.Nombre" style="height: 200px; object-fit: cover; border-bottom: 3px solid #ff5722;" />
+                        <div class="card-body text-center bg-light" style="background-color: #fff7e6;">
+                            <h5 class="card-title text-truncate" style="color: #ff5722;">@item.Nombre</h5>
                         </div>
                     </div>
                 </a>
@@ -37,7 +37,11 @@
             title: '¡Éxito!',
             text: successMessage,
             icon: 'success',
-            confirmButtonText: 'Aceptar'
+            confirmButtonText: 'Aceptar',
+            customClass: {
+                popup: 'swal2-shadow',
+                confirmButton: 'btn btn-primary'
+            }
         });
     </script>
 }

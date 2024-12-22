@@ -4,36 +4,36 @@
     ViewData["Title"] = "Detalles de la Mascota";
 }
 
-<h1 class="text-center my-4">Detalles de la Mascota</h1>
+<h1 class="text-center my-4" style="color: #ff5722;">Detalles de la Mascota</h1>
 
 <div class="container d-flex justify-content-center">
-    <div class="card shadow-lg" style="max-width: 600px; width: 100%;">
-        <img src="@Model.ImageUrl" class="card-img-top" alt="Imagen de @Model.Nombre" style="object-fit: cover; height: 300px; border-radius: 4px;" />
-        <div class="card-body text-center">
-            <h4 class="card-title mb-3">@Model.Nombre</h4>
+    <div class="card shadow-lg" style="max-width: 600px; width: 100%; border: 1px solid #ff5722;">
+        <img src="@Model.ImageUrl" class="card-img-top" alt="Imagen de @Model.Nombre" style="object-fit: cover; height: 300px; border-bottom: 3px solid #ff5722;" />
+        <div class="card-body text-center" style="background-color: #fff7e6;">
+            <h4 class="card-title mb-3" style="color: #ff5722;">@Model.Nombre</h4>
             <dl class="row justify-content-center">
-                <dt class="col-sm-4">Especie:</dt>
+                <dt class="col-sm-4" style="color: #6c757d;">Especie:</dt>
                 <dd class="col-sm-8">@Html.DisplayFor(model => model.Especie)</dd>
 
-                <dt class="col-sm-4">Raza:</dt>
+                <dt class="col-sm-4" style="color: #6c757d;">Raza:</dt>
                 <dd class="col-sm-8">@Html.DisplayFor(model => model.Raza)</dd>
 
-                <dt class="col-sm-4">Edad:</dt>
+                <dt class="col-sm-4" style="color: #6c757d;">Edad:</dt>
                 <dd class="col-sm-8">@Html.DisplayFor(model => model.Edad) años</dd>
 
-                <dt class="col-sm-4">Sexo:</dt>
+                <dt class="col-sm-4" style="color: #6c757d;">Sexo:</dt>
                 <dd class="col-sm-8">@Html.DisplayFor(model => model.Sexo)</dd>
 
-                <dt class="col-sm-4">Estado:</dt>
+                <dt class="col-sm-4" style="color: #6c757d;">Estado:</dt>
                 <dd class="col-sm-8">@Html.DisplayFor(model => model.Estado)</dd>
 
-                <dt class="col-sm-4">Dueño:</dt>
+                <dt class="col-sm-4" style="color: #6c757d;">Dueño:</dt>
                 <dd class="col-sm-8">@Html.DisplayFor(model => model.Dueno.Nombre)</dd>
             </dl>
         </div>
-        <div class="card-footer text-center">
+        <div class="card-footer text-center" style="background-color: #ff5722;">
             <a href="javascript:void(0)"
-               class="btn btn-success me-2"
+               class="btn btn-light me-2"
                onclick="confirmAdoption('@Url.Action("Create", "Adopcion", new { id = Model?.Id })')">
                 Adoptar
             </a>
